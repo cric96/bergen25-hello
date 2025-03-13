@@ -208,8 +208,23 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
   We must deal with different #emph[capabilities] and #emph[constraints]:
   - edge devices for #underline[sense/acting], but *resources-constrained*
   - cloud instances for #underline[scalability], but *latency/privacy* issues
+
+  #v(1.5em)
+
+  #only("3")[
+    #align(center)[
+      #box(fill: rgb("EB801A35"), outset: 0.75em, radius: 1em)[
+        How to #underline[deploy] the program in such infrastructures?
+      ]
+    ]
+  ]
 ][
-  #figure(image("images/edge-cloud-continuum.svg", height: 64%))
+  #only("1")[
+    #figure(image("images/ac-monolithic-motivation.svg", height: 64%))
+  ]
+  #only("2-3")[
+    #figure(image("images/edge-cloud-continuum.svg", height: 64%))
+  ]
 ]
 
   // #align(center)[
