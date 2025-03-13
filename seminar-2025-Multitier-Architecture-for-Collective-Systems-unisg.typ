@@ -1,8 +1,9 @@
-#import "@preview/touying:0.5.2": *
+#import "@preview/touying:0.6.1": *
 #import themes.metropolis: *
-#import "@preview/fontawesome:0.1.0": *
-#import "@preview/ctheorems:1.1.2": *
+#import "@preview/fontawesome:0.5.0": *
+#import "@preview/ctheorems:1.1.3": *
 #import "@preview/numbly:0.1.0": numbly
+#import "utils.typ": *
 
 // Pdfpc configuration
 // typst query --root . ./example.typ --field value --one "<pdfpc-file>" > ./example.pdfpc
@@ -40,20 +41,40 @@
   footer: self => self.info.institution,
   config-common(
     // handout: true,
-    preamble: pdfpc-config, 
+    preamble: pdfpc-config,
+    show-bibliography-as-footnote: bibliography(title: none, "bibliography.bib"),
   ),
   config-info(
-    title: [Title],
-    subtitle: [Subtitle],
-    author: [Authors],
-    date: datetime.today(),
-    institution: [Institution],
-    // logo: emoji.school,
+    title: [Multitier Architectures for Collective Systems],
+    // subtitle: [Seminar \@ UniSg],
+    author: author_list(
+      (
+        (first_author("Nicolas Farabegoli"), "nicolas.farabegoli@unibo.it"),
+      )
+    ),
+    date: datetime(day: 31, month: 03, year: 2025).display("[day] [month repr:long] [year]"),
+    institution: [University of Bologna],
+    logo: align(right)[#image("images/disi.svg", width: 55%)],
   ),
 )
 
 #set text(font: "Fira Sans", weight: "light", size: 20pt)
 #show math.equation: set text(font: "Fira Math")
+
+#set raw(tab-size: 4)
+#show raw: set text(size: 1em)
+#show raw.where(block: true): block.with(
+  fill: luma(240),
+  inset: (x: 1em, y: 1em),
+  radius: 0.7em,
+  width: 100%,
+)
+
+#show bibliography: set text(size: 0.75em)
+#show footnote.entry: set text(size: 0.75em)
+
+#set list(marker: box(height: 0.65em, align(horizon, text(size: 2em)[#sym.dot])))
+
 
 // #set heading(numbering: numbly("{1}.", default: "1.1"))
 
@@ -63,7 +84,27 @@
 
 // #components.adaptive-columns(outline(title: none, indent: 1em))
 
-= Animation
+== About Myself
+
+#components.side-by-side(columns: (1fr, 2fr), gutter: 0em)[
+  #block(clip: true, radius: 50%, stroke: 0.5em + luma(190))[#figure(image("images/PXL_20240322_130744650.square.jpg", width: 85%))]
+][
+  === Nicolas Farabegoli
+
+  - Ph.D. Student at the _University of Bologna_ (Cesena)
+    - 2#super[nd] year in _Computer Science and Engineering_
+  - Researcher at the *Pervasive Systems* lab
+
+  === Research Scope and Interests
+
+  - *Large-scale* distributed systems
+    - *Collective* systems
+    - Execution *platforms* in Cloud-Edge environments
+  - *Programming languages* and _paradigms_
+    - OOP --- Java|Kotlin
+    - FP --- Scala #fa-heart(solid: true)
+  - _Simulation_ and _modeling_
+]
 
 == Simple Animation
 
@@ -115,47 +156,42 @@
 
 // #new-section-slide("Slide section 1")
 
-// #slide(title: "Slide")[
-//   *Bold* and _italic_ text.
-  
-//   This is a citiation @nicolas_farabegoli_2024_10535841.
+== Slide
+*Bold* and _italic_ text.
 
-//   #alert[
-//     This is an alert.
-//   ]
-// ]
+This is a citation #cite(label("DBLP:journals/fgcs/FarabegoliPCV24")).
+This another citation #cite(label("DBLP:journals/iot/FarabegoliPCV24"))
 
-// #slide(title: "Code slide")[
-//   ```kotlin
-//   fun main() {
-//       println("Hello, world!")
+#alert[This is an alert.]
 
-//       for (i in 0..9) {
-//           println(i)
-//       }
-//       println("Goodbye, world!")
-//   }
-//   ```
-// ]
+== Code slide
 
-// #slide[
-//   = This is a title
+```kotlin
+fun main() {
+    println("Hello, world!")
+    for (i in 0..9) {
+        println(i)
+    }
+    println("Goodbye, world!")
+}
+```
 
-//   #lorem(24)
+== Title and subtitle slide
 
-//   == This is a subtitle
+=== This is a subtitle
 
-//   #lorem(34)
-// ]
+#lorem(24)
 
-// #slide[
+=== This is a subtitle
 
-//   == Icon in a title #fa-java()
+#lorem(34)
 
-//   #fa-icon("github", fa-set: "Brands") -- Github icon
+== FontAwesome icons
 
-//   #fa-icon("github", fa-set: "Brands", fill: blue) -- Github icon blue fill
-// ]
+=== Icon in a title #fa-java()
+
+#fa-icon("github") -- Github icon \
+#fa-icon("github", fill: blue) -- Github icon blue fill
 
 // #slide[
 //   #bibliography("bibliography.bib")
