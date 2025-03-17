@@ -50,11 +50,11 @@
     author: author_list(
       (
         (first_author("Nicolas Farabegoli"), "nicolas.farabegoli@unibo.it"),
-      )
+      ), logo: "images/disi.svg"
     ),
     date: datetime(day: 31, month: 03, year: 2025).display("[day] [month repr:long] [year]"),
     // institution: [University of Bologna],
-    logo: align(right)[#image("images/disi.svg", width: 55%)],
+    // logo: align(right)[#image("images/disi.svg", width: 55%)],
   ),
 )
 
@@ -227,17 +227,96 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
   ]
 ]
 
-  // #align(center)[
-  //   The #alert[opportunistic] use of the _continuum_ offers new possibilities, \
-  //   but requires fexible #alert[deployment] strategies.
-  // ]
+= Research Gap
 
+== Identified Challenges
+
+#quote[Collective deployments leverage *only* the #underline[devices] tier, not accounting other #emph[tiers]]
+
+- How can we #emph[partition] our (macro-)system, preserving its #emph[collective] behavior?
+- How can we describe the partitioned system in a #emph[uniform] way?
+
+#v(2em)
+
+#quote[Modern infrastructures are *dynamics* (openness) and *heterogeneous* (capabilities)]
+
+- How can we #emph[fully exploit] the resources of the #emph[Edge-Cloud Continuum]?
+- How can we deal with #emph[different devices] and #emph[platforms]?
+- #underline[How] and #underline[when] to #emph[reconfigure] the system?
+
+== Research directions
+
+#show heading: set align(center)
+#components.side-by-side[
+  === Languages
+  
+  #v(1em)
+
+  - DSLs
+  - Language *Independence*
+  - *Transpilation* (heterog.)
+
+  #align(center)[#fa-braille(size: 3em)]
+][
+  === Platforms
+
+  #v(1em)
+
+  - Comm. *patterns*
+  - Deploy *independence*
+  - System *specifications*
+
+  #align(center)[#fa-screwdriver-wrench(size: 3em)]
+][
+  === Reconfigurations
+
+  #v(1em)
+
+  - Resource *management*
+  - *On-line* reconfiguration
+  - *Predictive* scaling
+
+  #align(center)[#fa-rotate(size: 3em)]
+]
+
+= What we have done so far...
+
+== Pulverization -- Foundational work
+#show heading: set align(left)
+
+=== Pulverization Model
+
+#components.side-by-side(columns: (1fr, 2fr))[
+  #only("1")[
+    Split of each *logical device* into #emph[five] #underline[independently deployable] components #cite(label("DBLP:journals/fi/CasadeiPPVW20")):
+    - Sensors -- $#math.sigma$
+    - Actuators -- $#math.alpha$
+    - State -- $#math.kappa$
+    - Communication -- $#math.chi$
+    - behavior -- $#math.beta$
+  ]
+  #only("2")[
+    A device #emph[round] is composed of:
+    1. Collect *sensors* data, the previous *state*, and *neighbor messages*
+    2. Apply the *behavior* with collected data
+    3. Update the *state*, *send messages* to neighbors, and *actuate* over the environment
+    4. Sleep until the next round...
+  ]
+][
+  #figure(image("images/image.png", height: 65%))
+]
+
+== Try
+
+#feature-block("pippo")[
+  dfdf
+]
 
 // == Slide
 // *Bold* and _italic_ text.
 
 // This is a citation #cite(label("DBLP:journals/fgcs/FarabegoliPCV24")).
-// This another citation #cite(label("DBLP:journals/iot/FarabegoliPCV24"))
+// This another citation #cite(label("DBLP:journals/iot/FarabegoliPCV24")
 
 // #alert[This is an alert.]
 

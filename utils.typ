@@ -29,3 +29,31 @@
   }
   #v(1em)
 ]
+
+/// 
+///
+/// - title (str): the title of block
+/// - icon (): optional icon
+/// - color (): the color of the block 
+/// - content (): the content of the block
+/// -> 
+#let feature-block(title, icon: "", color: rgb("#23373b"), content) = {
+  block(
+    width: 100%,
+    inset: (x: 1em, y: 1em),
+    fill: color.lighten(90%),
+    radius: 1em,
+    stroke: (
+      paint: color.lighten(50%), 
+      thickness: 1pt,
+      dash: "solid"
+    ),
+    [
+      #text(weight: "bold", size: 20pt)[#icon #title]
+      #v(-0.55em)
+      #line(length: 100%, stroke: (paint: color.lighten(50%), thickness: 1.5pt))
+      #v(-0.55em)
+      #content
+    ]
+  )
+}
