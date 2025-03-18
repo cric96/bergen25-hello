@@ -306,11 +306,60 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
   #figure(image("images/image.png", height: 65%))
 ]
 
-== Try
+== Pulverization in Action
 
-#feature-block("pippo")[
-  dfdf
+#components.side-by-side[
+=== PulvReAKt #fa-gear()
+
+_Kotlin Multiplatform_ framework implementing the *Pulverization model* #cite(label("DBLP:journals/fgcs/FarabegoliPCV24")).
+
+- #emph[DSL] for specifying system deployments in the *ECC*
+- Supports #emph[RabbitMQ] & #emph[MQTT] for _communication_
+- Supports _local_ #emph[reconfigurations rules]
+][
+=== Global Reconfiguration
+
+Formalization of generic *Pulverized architectures* supprting #emph[global-level] reconfigurations #cite(label("DBLP:journals/iot/FarabegoliPCV24")).
+ 
+- Use #emph[Aggregate Programming] for global reconfiguration policies
+- Formalization of a #emph[generic pulverized architecture].
 ]
+
+== Results with Pulverization
+
+#components.side-by-side[
+=== Functional benefits
+
+#fa-check-square() Deployments *without rewriting the program* \
+#fa-check-square() Components "relocation" preserving *functional correctness*
+#v(1.5em)
+][
+=== Non-functional benefits
+
+#fa-check-square() Good trade-off between *battery consumption* and *cloud costs* \
+#fa-check-square() Full exploitation of the *ECC* resources
+#fa-check-square() *Global policies* preventing "oscillator" behaviors in reconfiguration
+]
+
+= A Different Perspective
+
+== Limitations of traditional Pulverization model
+
+=== Intuition
+
+Previous work #cite(label("DBLP:journals/fi/CasadeiPPVW20")) partitioned the #emph[self-org/macroprogram] #underline[execution model] to achieve flexible deployments.
+But, it does not consider the *modularity* at the #underline[macro-program level].
+
+#components.side-by-side(columns: (1fr, 1.5fr))[
+Each component *can* require one or more #emph[requirements] to be executed.
+
+#box(fill: rgb("EB801A35"), inset: 0.75em, radius: 1em)[
+  Not all the *devices* in the network #underline[can satisfy] all the requirements.
+]
+][
+  #figure(image("images/macro-program-requirements.svg", height: 44%))
+]
+
 
 // == Slide
 // *Bold* and _italic_ text.
