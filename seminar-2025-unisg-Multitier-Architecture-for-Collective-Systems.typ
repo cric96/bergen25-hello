@@ -360,6 +360,62 @@ Each component *can* require one or more #emph[requirements] to be executed.
   #figure(image("images/macro-program-requirements.svg", height: 44%))
 ]
 
+= Multitier Collective Architecture
+
+== Macro Model
+
+#components.side-by-side(columns: (2fr, 1fr))[
+  / Macro-program: direct acyclic graph of #emph[components]
+  / Component: atomic functional (sub)macro-program taking a list of #emph[inputs] and returning an #emph[output]
+  / Port: property of each component through which #emph[values] are received or sent
+  / Bindings: models the connections between an #emph[output port] of a component to #underline[one or more] #emph[input ports] of another component
+][
+  #figure((image("images/partitioned-macro-program.svg")))
+]
+
+== Local & Collective Components
+
+#components.side-by-side(columns: (2fr, auto))[
+  / Local component: transformation of #emph[local inputs] to #emph[local outputs]
+  / Collective components: transformation of local inputs + "implicit" messages from instances of the #emph[same component] in #underline[neighbors] producing #emph[collective output]
+
+  #emph[Local components] do #underline[not require interactions] with other components. \
+  #emph[Collective components] require #underline[interactions] with other components instances in neighbors.
+][
+  #figure((image("images/collective-local-components.svg", height: 60%)))
+]
+
+== System Model
+
+/ Application devices: execute the #emph[macro-program] $#text("MP")$
+/ Infrastructural devices: #emph[support] the execution of some #underline[components] of the $#text("MP")$
+
+#v(2em)
+
+#figure(image("images/system-model.svg", width: 60%))
+
+== Deployment Model
+
+#components.side-by-side(columns: (2fr, auto))[
+  Not all the $text("C")^j_i$ components #emph[can be executed] by the *application devices*.
+
+  It may #emph[lack] _sensors/actuators_, _computational capabilities_, or simply for optimizing _non-functional requirements_.
+
+  In such cases, the $text("C")^j_i$ component is offloaded to an #emph[infrastructural devices], also called *surrogate* for the $text("C")^j_i$ component.
+][
+  #figure(image("images/offloading-surrogate.svg", height: 65%))
+]
+
+The #emph[offloading] can be iteratively applied determinig a *forwarding chain* involving multiple *infrastructural devices*.
+
+== Execution Model
+
+/ Scheduling independence: each #underline[component] is independently #emph[scheduled]
+/ Round based execution: each #underline[component] is executed in a #emph[round-based fashion]
+/ Message shipping: each #underline[component] execution #emph[produces messages] to be #emph[shipped]
+
+#figure(image("images/message-propagation.svg", width: 70%))
+
 
 // == Slide
 // *Bold* and _italic_ text.
