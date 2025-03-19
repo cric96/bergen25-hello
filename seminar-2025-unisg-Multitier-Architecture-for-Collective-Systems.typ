@@ -414,7 +414,9 @@ The #emph[offloading] can be iteratively applied determinig a *forwarding chain*
 / Round based execution: each #underline[component] is executed in a #emph[round-based fashion]
 / Message shipping: each #underline[component] execution #emph[produces messages] to be #emph[shipped]
 
-#figure(image("images/message-propagation.svg", width: 70%))
+#figure(image("images/message-propagation.svg", width: 60%))
+
+Execution model #emph[formalized] via operational semantics #cite(label("DBLP:conf/acsos/FarabegoliVC24"))
 
 
 // == Slide
