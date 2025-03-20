@@ -62,13 +62,14 @@
 #show math.equation: set text(font: "Fira Math")
 
 #set raw(tab-size: 4)
-#show raw: set text(size: 0.75em)
+// #show raw: set text(size: 0.85em)
 #show raw.where(block: true): block.with(
   fill: luma(240),
   inset: (x: 1em, y: 1em),
   radius: 0.7em,
   width: 100%,
 )
+#show raw.where(block: true): set text(size: 1em)
 
 #show bibliography: set text(size: 0.75em)
 #show footnote.entry: set text(size: 0.75em)
@@ -428,6 +429,8 @@ Execution model #emph[formalized] via operational semantics #cite(label("DBLP:co
 
 == Results
 
+*Prototype* model implemented in Scala + ScaFi using #emph[Alchemist Simulator].
+
 #figure(image("images/power_consumption.svg"))
 
 #components.side-by-side(columns: (1fr, 1fr))[
@@ -437,8 +440,97 @@ Execution model #emph[formalized] via operational semantics #cite(label("DBLP:co
 ][
   === Cons
 
-  #fa-xmark-circle() Forward chains introduce #emph[more messages] to be shipped but *optimizations* can be implemented
+  #fa-xmark-circle() Forward chains may introduce #emph[more messages] to be shipped but *optimizations* can be implemented
 ]
+
+#focus-slide[What's *next*?]
+
+== Framework Implementation
+
+=== Ideas
+
+#fa-lightbulb() *Multitier* approach for managing #emph[system specification] and #emph[deployment] \
+#fa-lightbulb() *Capabilities* controlling the #emph[components' placements] over the infrastructure \
+#fa-lightbulb() *Runtime* implementation for managing #emph[distributed communication and patterns] \
+#fa-lightbulb() *Reconfiguration* and deployments *validation* at runtime \
+#fa-lightbulb() ...
+
+== Current Prototype
+
+#components.side-by-side(columns: (2fr, 1fr))[
+  === Multitier Architecture for Collective Systems
+
+  #fa-gears() *Local* & *Collective* components support\
+  #fa-gears() *Capabilities* with "behavior" for placement control \
+  #fa-gears() *DSL* for system #emph[specification] and #emph[deployment] \
+  #fa-gears() Component's *scheduling* management
+
+  #v(1em)
+
+  The #emph[prototype] leverages Scala 3 multiplatform.
+][
+  #figure(image("images/scala-svgrepo-com.svg"))
+  #align(center)[
+    #text(size: 2em, weight: "bold")[Scala 3]
+  ]
+]
+
+== Components Definition
+
+`Components` are functions #underline[plus] `Capabilities` for controlling the *placement* of the components over the infrastructure.
+
+```scala
+sealed trait Component[-Input <: Product, +Output]:
+  type Capabilities
+
+trait LocalComponent[
+  -Input <: Product, +Output
+] extends Component[Input, Output]:
+  def apply(input: Input): Context ?=> Output
+
+trait CollectiveComponent[
+  -Input <: Product, +Output
+] extends Component[Input, Output]:
+  def apply(input: Input): Context ?=> Output
+  def sharedData(using ctx: Context): CollectiveData[ctx.DeviceId, Output]
+```
+
+== Components Implementation
+
+=== Capabilities definitions
+
+```scala
+trait Accelerometer
+trait Gps
+trait HighComputation
+```
+
+=== `LocalComponent` definition
+
+```scala
+object PositionSensor extends LocalComponent[EmptyTuple, Coordinate]:
+  override type Capabilities = Accelerometer | Gps
+  def apply(input: EmptyTuple): Context ?=> Coordinate = ???
+```
+#fa-warning() `EmptyTuple` for representing the absence of inputs, but respecting the constrint of the `Product` type.
+
+=== `CollectiveComponent` definition
+
+```scala
+object CrowdRegions extends CollectiveComponent[Coordinate, Boolean]:
+  override type Capabilities = HighComputation
+  override def apply(input: Coordinate): Context ?=> Boolean =
+    val neighborsData = sharedData
+    ???
+```
+
+With `shareData` we access to the neighbors' data produced by the same component instances.
+
+*Union* and *intersection* types are used to combine the available capabilities. \
+Used later for enforcing valid components #emph[placement] via *type-level* checks.
+
+
+
 
 // == Slide
 // *Bold* and _italic_ text.
