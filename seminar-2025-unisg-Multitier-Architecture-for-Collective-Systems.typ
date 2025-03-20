@@ -418,6 +418,27 @@ The #emph[offloading] can be iteratively applied determinig a *forwarding chain*
 
 Execution model #emph[formalized] via operational semantics #cite(label("DBLP:conf/acsos/FarabegoliVC24"))
 
+== Scenario
+
+#figure(image("images/rescue-scenario.svg"))
+
+== Deployment
+
+#figure(image("images/rescue-scenario-deployment.svg"))
+
+== Results
+
+#figure(image("images/power_consumption.svg"))
+
+#components.side-by-side(columns: (1fr, 1fr))[
+  === Pros
+
+  #fa-check-circle() Opportunistically exploit the #emph[ECC] resources reduces the *power consumption* \
+][
+  === Cons
+
+  #fa-xmark-circle() Forward chains introduce #emph[more messages] to be shipped but *optimizations* can be implemented
+]
 
 // == Slide
 // *Bold* and _italic_ text.
