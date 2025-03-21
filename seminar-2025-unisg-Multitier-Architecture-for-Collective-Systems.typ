@@ -631,7 +631,56 @@ def infrastructureSpecification() =
 
 == Research Interests
 
+#components.side-by-side(columns: (1fr, 1fr, 1fr))[
+  #show heading: set align(center)
+  === Infrastructure as Code
 
+  #v(1em)
+
+  #figure(image("images/avatar-on-black.svg", width: 50%))
+][
+  #show heading: set align(center)
+  === Embedded Systems
+
+  #v(1em)
+
+  #figure(image("images/4047376_device_embedded_embedding_internet_iot_icon.svg", width: 50%))
+][
+  #show heading: set align(center)
+  === Distributed Platforms
+
+  #v(1em)
+
+  #figure(image("images/network.svg", width: 50%))
+
+
+]
+
+#components.side-by-side[
+  #show heading: set align(center)
+  === Programming Languages
+
+  #v(1em)
+
+  #figure(
+    grid(
+      columns: 3,
+      image("images/scala-svgrepo-com.svg", width: 85%),
+      image("images/jb-kotlin.svg", width: 85%),
+      image("images/java.svg", width: 85%)
+      )
+  )
+][
+  #show heading: set align(center)
+  === DevOps
+
+  #v(1em)
+
+  #figure(image("images/Devops-toolchain.svg", width: 50%))
+
+]
+
+#focus-slide[`$ thank you`]
 
 
 
