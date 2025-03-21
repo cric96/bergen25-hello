@@ -529,6 +529,109 @@ With `shareData` we access to the neighbors' data produced by the same component
 *Union* and *intersection* types are used to combine the available capabilities. \
 Used later for enforcing valid components #emph[placement] via *type-level* checks.
 
+== Infrasrtucture Definition
+
+As defined in the model, *two physical* devices are defined:  `Application` and `Infrastructural`.
+
+```scala
+sealed trait Device:
+  type Capabilities
+  type Tie
+
+trait Application extends Device
+
+trait Infrastructural extends Device
+```
+
+A `Device` exhibits a set of `Capabilities`, and define its `Tie` to the other devices.
+
+== Macroprogram Definition
+
+"Wiring" the components together, we define the #emph[DAG] of the components, resulting in the *macroprogram* definition.
+
+```scala
+def macroProgram(using Context) =
+  val position = PositionSensor(EmptyTuple)
+  val heartbeat = HeartbeatAcquisition(EmptyTuple)
+  val alert =
+    RegionsHeartbeatDetection(position *: heartbeat *: EmptyTuple)
+  AlertActuation(alert *: EmptyTuple)
+```
+
+#fa-warning() Will be resposibility of the #emph[underlying runtime] to renseble the messages from #emph[offloaded] components.
+
+== Infrastructure Specification
+
+This way, we can #emph[define] the "classes" of devices #underline[available in the system].
+
+```scala
+trait Smartphone extends Application:
+  override type Capabilities = Accelerometer & Gps & Alert
+  override type Tie <: Smartphone & Wearable & Edge
+
+trait Wearable extends Infrastructural:
+  override type Capabilities = Accelerometer & HeartbeatSensor
+  override type Tie <: Wearable & Smartphone
+
+trait Edge extends Infrastructural:
+  override type Capabilities = HighComputation
+  override type Tie <: Edge & Smartphone
+```
+
+== Infrastructure Specification (2)
+
+We can further #emph[specify] the *instances* of the devices.
+
+```scala
+object Smartphone1 extends Smartphone
+object Smartphone2 extends Smartphone
+object Wearable1 extends Wearable
+object Wearable2 extends Wearable
+object Edge1 extends Edge
+```
+
+== Deployment Mapping
+
+*DSL* for specifying the #emph[deployment] of the components over the infrastructure.
+
+```scala
+def infrastructureSpecification() =
+  deployment:
+    forDevice(Smartphone1):
+      PositionSensor deployedOn Wearable1
+      HeartbeatAcquisition deployedOn Wearable1
+      RegionsHeartbeatDetection deployedOn Edge1
+      AlertActuation deployedOn Smartphone1
+    forDevice(Smartphone2):
+      PositionSensor deployedOn Smartphone2
+      HeartbeatAcquisition deployedOn Wearable2
+      RegionsHeartbeatDetection deployedOn Edge1
+      AlertActuation deployedOn Smartphone2
+```
+
+#fa-check-circle() *Type-level* checks for the #emph[validity] of the deployment.
+
+#focus-slide[What is *missing*?]
+
+== Future Work
+
+#fa-flask() *Early prototype* exploring feasibility of the approach...
+
+#v(2em)
+
+#fa-rocket() *Runtime* implementation for managing #emph[distribution] \
+#fa-rocket() *Reconfiguration* and deployments *validation* at runtime \
+#fa-rocket() *How* to #emph[reconfigure] the system at runtime? How can we preserve #emph[safety]?
+
+#align(center)[
+  #text(size: 2em)[Any *contribution* is welcome! #fa-heart()]
+]
+
+= Not only Collective Systems #fa-smile-wink()
+
+== Research Interests
+
+
 
 
 
