@@ -69,7 +69,7 @@
   radius: 0.7em,
   width: 100%,
 )
-#show raw.where(block: true): set text(size: 1em)
+#show raw.where(block: true): set text(size: 0.75em)
 
 #show bibliography: set text(size: 0.75em)
 #show footnote.entry: set text(size: 0.75em)
@@ -109,6 +109,10 @@
 ]
 
 = Collective Systems at a Glance
+
+== Collctive Systems
+
+=== Challenges
 
 == Collective Self-organizing Applications
 
@@ -215,7 +219,7 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
   #only("3")[
     #align(center)[
       #box(fill: rgb("EB801A35"), outset: 0.75em, radius: 1em)[
-        How to #underline[deploy] the program in such infrastructures?
+        How to #underline[deploy] the (macro)program in such infrastructures?
       ]
     ]
   ]
@@ -232,12 +236,14 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
 
 == Identified Challenges
 
+=== Modularization
+
 #quote[Collective deployments leverage *only* the #underline[devices] tier, not accounting other #emph[tiers]]
 
 - How can we #emph[partition] our (macro-)system, preserving its #emph[collective] behavior?
 - How can we describe the partitioned system in a #emph[uniform] way?
 
-#v(2em)
+=== Edge-Cloud Continuum
 
 #quote[Modern infrastructures are *dynamics* (openness) and *heterogeneous* (capabilities)]
 
@@ -280,7 +286,7 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
   #align(center)[#fa-rotate(size: 3em)]
 ]
 
-= What we have done so far...
+= What I have done so far...
 
 == Pulverization -- Foundational work
 #show heading: set align(left)
@@ -297,11 +303,7 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
     - behavior -- $#math.beta$
   ]
   #only("2")[
-    A device #emph[round] is composed of:
-    1. Collect *sensors* data, the previous *state*, and *neighbor messages*
-    2. Apply the *behavior* with collected data
-    3. Update the *state*, *send messages* to neighbors, and *actuate* over the environment
-    4. Sleep until the next round...
+    A device #emph[round] is the (possibly) *distributed* version of the round introduced before.
   ]
 ][
   #figure(image("images/image.png", height: 65%))
@@ -341,6 +343,11 @@ Formalization of generic *Pulverized architectures* supprting #emph[global-level
 #fa-check-square() Full exploitation of the *ECC* resources
 #fa-check-square() *Global policies* preventing "oscillator" behaviors in reconfiguration
 ]
+
+=== Cons
+
+#fa-xmark-circle() Partitioning at the *execution level* \
+#fa-xmark-circle() *No* support for *modularity* at the *macro-program level*
 
 = A Different Perspective
 
@@ -427,6 +434,8 @@ Execution model #emph[formalized] via operational semantics #cite(label("DBLP:co
 
 #figure(image("images/rescue-scenario-deployment.svg"))
 
+#figure(image("images/simulation-screenshot-poi.png"))
+
 == Results
 
 *Prototype* model implemented in Scala + ScaFi using #emph[Alchemist Simulator].
@@ -483,14 +492,10 @@ Execution model #emph[formalized] via operational semantics #cite(label("DBLP:co
 sealed trait Component[-Input <: Product, +Output]:
   type Capabilities
 
-trait LocalComponent[
-  -Input <: Product, +Output
-] extends Component[Input, Output]:
+trait LocalComponent[-Input <: Product, +Output] extends Component[Input, Output]:
   def apply(input: Input): Context ?=> Output
 
-trait CollectiveComponent[
-  -Input <: Product, +Output
-] extends Component[Input, Output]:
+trait CollectiveComponent[-Input <: Product, +Output] extends Component[Input, Output]:
   def apply(input: Input): Context ?=> Output
   def sharedData(using ctx: Context): CollectiveData[ctx.DeviceId, Output]
 ```
@@ -512,7 +517,7 @@ object PositionSensor extends LocalComponent[EmptyTuple, Coordinate]:
   override type Capabilities = Accelerometer | Gps
   def apply(input: EmptyTuple): Context ?=> Coordinate = ???
 ```
-#fa-warning() `EmptyTuple` for representing the absence of inputs, but respecting the constrint of the `Product` type.
+#fa-warning() `EmptyTuple` for representing the absence of inputs, but respecting the constraints of the `Product` type.
 
 === `CollectiveComponent` definition
 
@@ -553,8 +558,7 @@ A `Device` exhibits a set of `Capabilities`, and define its `Tie` to the other d
 def macroProgram(using Context) =
   val position = PositionSensor(EmptyTuple)
   val heartbeat = HeartbeatAcquisition(EmptyTuple)
-  val alert =
-    RegionsHeartbeatDetection(position *: heartbeat *: EmptyTuple)
+  val alert = RegionsHeartbeatDetection(position *: heartbeat *: EmptyTuple)
   AlertActuation(alert *: EmptyTuple)
 ```
 
