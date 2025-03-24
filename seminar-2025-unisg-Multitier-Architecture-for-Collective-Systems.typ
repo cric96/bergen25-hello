@@ -112,7 +112,18 @@
 
 == Collctive Systems
 
+#quote[Complex systems composed of a large number of #underline[devices] that interact each other to achieve a global #underline[common goal]] #cite(label("DBLP:conf/birthday/BucchiaroneM19"))
+
 === Challenges
+
+#components.side-by-side[
+  Complexity in managing large-scale systems:
+  - decentralization for *scalability* and *delegation*
+  - *autonomic computing* and *self-organization* for #emph[adaptation]
+  - *collective computing* for coordination and collaboration
+][
+
+]
 
 == Collective Self-organizing Applications
 
