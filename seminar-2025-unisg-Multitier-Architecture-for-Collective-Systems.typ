@@ -95,7 +95,7 @@
 
   - Ph.D. Student at the _University of Bologna_ (Cesena)
     - 2#super[nd] year in _Computer Science and Engineering_
-  - Researcher at the #emph[Pervasive Systems] lab
+  - Researcher at the #emph[Pervasive Software Lab] \ #fa-globe() #text(blue)[#link("https://pslab-unibo.github.io")]
 
   === Research Scope and Interests
 
