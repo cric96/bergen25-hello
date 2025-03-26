@@ -529,7 +529,7 @@ object PositionSensor extends LocalComponent[EmptyTuple, Coordinate]:
   def apply(input: EmptyTuple): Context ?=> Coordinate = ???
 ```
 #fa-warning() `EmptyTuple` for representing the absence of inputs, but respecting the constraints of the `Product` type.
-
+#v(0.7em)
 === `CollectiveComponent` definition
 
 ```scala
@@ -639,7 +639,7 @@ def infrastructureSpecification() =
 #fa-rocket() *How* to #emph[reconfigure] the system at runtime? How can we preserve #emph[safety]?
 
 #align(center)[
-  #text(size: 2em)[Any *contribution* is welcome! #fa-heart()]
+  #text(size: 1.75em)[Room for *contribution* or *discussion*! #fa-heart()]
 ]
 
 = Not only Collective Systems #fa-smile-wink()
