@@ -122,7 +122,7 @@
   - *autonomic computing* and *self-organization* for #emph[adaptation]
   - *collective computing* for coordination and collaboration
 ][
-
+  #figure((image("images/step-11.png", width: 70%)))
 ]
 
 == Collective Self-organizing Applications
@@ -172,6 +172,13 @@
   4. Sleep until next *round*...
   #figure(image("images/ac.svg", width: 74%))
 ]
+
+== Alignment
+
+Each device produces a tree of values where each node in the tree associate a point in the #emph[AST] of the program with the corresponding *value*.
+
+#figure(image("images/alignment.svg"))
+
 
 == Aggregate Programming
 
