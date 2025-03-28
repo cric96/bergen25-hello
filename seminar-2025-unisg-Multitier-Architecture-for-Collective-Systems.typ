@@ -252,6 +252,7 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
 
 = Research Gap
 
+// TODO: be more focused on research challenges
 == Identified Challenges
 
 === Modularization
