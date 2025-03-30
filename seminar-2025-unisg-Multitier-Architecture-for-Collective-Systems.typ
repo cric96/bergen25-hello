@@ -45,8 +45,8 @@
     show-bibliography-as-footnote: bibliography(title: none, "bibliography.bib"),
   ),
   config-info(
-    title: [Multitier Architectures for Collective Systems],
-    // subtitle: [Seminar \@ UniSg],
+    title: [Empowering Collective Systems: A Multitier Approach],
+    subtitle: [Advancing Scalability & Coordination in Distributed Systems],
     author: author_list(
       (
         (first_author("Nicolas Farabegoli"), "nicolas.farabegoli@unibo.it"),
