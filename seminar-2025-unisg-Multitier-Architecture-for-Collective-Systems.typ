@@ -95,7 +95,7 @@
 
   - Ph.D. Student at the _University of Bologna_ (Cesena)
     - 2#super[nd] year in _Computer Science and Engineering_
-  - Researcher at the #emph[Pervasive Software Lab] \ #fa-globe() #text(blue)[#link("https://pslab-unibo.github.io")]
+  - Researcher at the #emph[Pervasive Software Lab] \ #fa-globe() #text(blue)[#link("https://pslab-unibo.github.io")] (prof. Mirko Viroli)
 
   === Research Scope and Interests
 
@@ -176,9 +176,18 @@
 == Alignment
 
 Each device produces a tree of values where each node in the tree associate a point in the #emph[AST] of the program with the corresponding *value*.
-
-#figure(image("images/alignment.svg"))
-
+#only("1")[
+  #figure(image("images/alignment.svg"))
+]
+#only("2")[
+  #figure(image("images/alignment-1.svg"))
+]
+#only("3")[
+  #figure(image("images/alignment-2.svg"))
+]
+#only("4")[
+  #figure(image("images/alignment-3.svg"))
+]
 
 == Aggregate Programming
 
