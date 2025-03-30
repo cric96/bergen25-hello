@@ -114,13 +114,12 @@
 
 #quote[Complex systems composed of a large number of #underline[devices] that interact each other to achieve a global #underline[common goal]] #cite(label("DBLP:conf/birthday/BucchiaroneM19"))
 
-=== Challenges
+=== Why Do We Need Smarter Collective Systems?
 
 #components.side-by-side[
-  Complexity in managing large-scale systems:
-  - decentralization for *scalability* and *delegation*
-  - *autonomic computing* and *self-organization* for #emph[adaptation]
-  - *collective computing* for coordination and collaboration
+  - Modern systems require *seamless* coordination of multiple devices, *services*, and *users*
+  - Struggle with *scalability*, *adaptability*, and efficient *resource management*.
+  - Decentralization for *scalability* and *delegation*
 ][
   #figure((image("images/step-11.png", width: 70%)))
 ]
