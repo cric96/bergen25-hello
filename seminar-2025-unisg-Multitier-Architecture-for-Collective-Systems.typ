@@ -261,22 +261,41 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
 = Research Gap
 
 // TODO: be more focused on research challenges
-== Identified Challenges
+== Challenges in Collective Systems Architectures
 
-=== Modularization
+#components.side-by-side(gutter: 3em)[
+  === Mixing *collective* and non-collective systems
 
-#quote[Collective deployments leverage *only* the #underline[devices] tier, not accounting other #emph[tiers]]
+  #figure(image("images/shuffle-svgrepo-com.svg", width: 60%))
 
-- How can we #emph[partition] our (macro-)system, preserving its #emph[collective] behavior?
-- How can we describe the partitioned system in a #emph[uniform] way?
+  How to #emph[interoperate] with non-collective systems?
+][
+  === Heterogeneous *devices* and *platforms*
+  #figure(image("images/code-scan-svgrepo-com.svg", width: 60%))
 
-=== Edge-Cloud Continuum
+  How to manage #emph[heterogeneous] resources?
+][
+  === Adaptive *scheduling* and *reconfigurations*
 
-#quote[Modern infrastructures are *dynamics* (openness) and *heterogeneous* (capabilities)]
+  #figure(image("images/stopwatch-svgrepo-com.svg", width: 60%))
 
-- How can we #emph[fully exploit] the resources of the #emph[Edge-Cloud Continuum]?
-- How can we deal with #emph[different devices] and #emph[platforms]?
-- #underline[How] and #underline[when] to #emph[reconfigure] the system?
+  Need for adaptive #emph[scheduling] and #emph[reconfiguration].
+]
+
+// === Modularization
+
+// #quote[Collective deployments leverage *only* the #underline[devices] tier, not accounting other #emph[tiers]]
+
+// - How can we #emph[partition] our (macro-)system, preserving its #emph[collective] behavior?
+// - How can we describe the partitioned system in a #emph[uniform] way?
+
+// === Edge-Cloud Continuum
+
+// #quote[Modern infrastructures are *dynamics* (openness) and *heterogeneous* (capabilities)]
+
+// - How can we #emph[fully exploit] the resources of the #emph[Edge-Cloud Continuum]?
+// - How can we deal with #emph[different devices] and #emph[platforms]?
+// - #underline[How] and #underline[when] to #emph[reconfigure] the system?
 
 == Research directions
 
