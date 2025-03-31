@@ -340,3 +340,43 @@ Put some charts
 Put the new idea of mirko here
 == Researcher Night Demo
 Put the demo of the researcher 
+== All here? Towards Hybrid Approach
+Todo
+== Many-Agent Reinforcement Learning -- In a nutshell
+Todo
+== Field Informed Reinforcement Learning -- Overall Idea
+Todo
+== Simulation settings
+Todo
+== Results
+Todo
+== Conclusion
+= Conclusion
+
+== Takeaways
+
+#components.side-by-side(columns: (1fr, 1fr))[
+  === What We've Covered
+  - *Collective Systems* as a paradigm for future computing
+  - *Aggregate Programming* as a principled approach to swarm coordination
+  - *Field Calculus* abstractions for spatial computations
+  - *Hybrid approaches* combining self-organization with AI/ML techniques
+][
+  === Future Directions
+  - Scaling to larger and more heterogeneous systems
+  - Improving robustness in highly dynamic environments
+  - Bridging the gap between simulation and real-world deployment
+  - Democratizing collective programming with better tools and abstractions
+]
+
+== Takeaways
+#quote[The future of computing isn't about individual devices, but about the emergent intelligence of their collective behavior.]
+
+#align(center)[
+  #v(1em)
+  #emph[Thank you for your attention!]
+  #v(0.5em)
+  Questions? Comments?
+  #v(0.5em)
+  #text(blue)[#link("mailto:gianluca.aguzzi@unibo.it")]
+]
