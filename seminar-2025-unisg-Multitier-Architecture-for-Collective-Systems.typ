@@ -77,6 +77,7 @@
 #set list(marker: box(height: 0.65em, align(horizon, text(size: 2em)[#sym.dot])))
 
 #let emph(content) = text(weight: "bold", style: "italic", content)
+#show link: set text(hyphenate: true)
 
 // #set heading(numbering: numbly("{1}.", default: "1.1"))
 
@@ -696,9 +697,10 @@ def infrastructureSpecification() =
 
 == Future Work
 
-#fa-flask() *Early prototype* exploring feasibility of the approach...
+#fa-flask() *Early prototype* exploring feasibility of the approach...\
+#fa-github() #text(weight: "bold", style: "italic")[#link("github.com/nicolasfara/experiment-multitier-modularization", "nicolasfara/experiment-multitier-modularization")]
 
-#v(2em)
+#v(1em)
 
 #fa-rocket() *Runtime* implementation for managing #emph[distribution] \
 #fa-rocket() *Reconfiguration* and deployments *validation* at runtime \
