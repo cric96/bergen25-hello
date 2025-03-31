@@ -698,7 +698,7 @@ def infrastructureSpecification() =
 == Future Work
 
 #fa-flask() *Early prototype* exploring feasibility of the approach...\
-#fa-github() #text(weight: "bold", style: "italic")[#link("github.com/nicolasfara/experiment-multitier-modularization", "nicolasfara/experiment-multitier-modularization")]
+#fa-github() #text(weight: "bold", style: "italic")[#link("https://github.com/nicolasfara/experiment-multitier-modularization", "nicolasfara/experiment-multitier-modularization")]
 
 #v(1em)
 
