@@ -176,7 +176,7 @@
 
 === Field
 
-#quote[A #emph[field] is a *distributed* data structure that associates a _value_ to each _device_ in the system] #cite(label("DBLP:conf/coordination/AudritoBDV18"))
+#quote[A #emph[field] is a *distributed* data structure that associates a _value_ to each _device_ in the system]#cite(label("DBLP:conf/coordination/AudritoBDV18"))
 
 #components.side-by-side[
   === Neighboring
@@ -184,7 +184,6 @@
   ```scala
   val f = nbr(10.0)
   //> f: Field[Double]
-
   ```
 ][
   === Repeating
@@ -192,11 +191,11 @@
   ```scala
   val a = rep(0): it =>
     it + 1
-
   ```
 ][
   === Branching
   *Split* the network based on a _condition_.
+  #v(0.42em)
   ```scala
   branch(cond) { nbr(0) } { 
     nbr(Int.MaxValue)
