@@ -46,7 +46,7 @@
   ),
   config-info(
     title: [Engineering Collective Systems],
-    subtitle: [Language-based approach to programming swarms of devices],
+    subtitle: [Language-based approach to programming "swarms" of devices],
     author: author_list(
       (
         (first_author("Gianluca Aguzzi"), "gianluca.aguzzi@unibo.it"),
