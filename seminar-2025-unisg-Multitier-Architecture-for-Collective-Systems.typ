@@ -149,8 +149,8 @@
 
 == Self-organizing Computational Model
 
-#emph[Behaviour]: _repeated_ execution with #underline[async rounds] \
-#emph[Interaction]: _repeated_ *neighbours* #underline[messages exchange] \
+#emph[Behaviour]: execution with #underline[async rounds] \
+#emph[Interaction]: *neighbours* #underline[messages exchange] \
 #emph[Alignment]: each device execution is *aligned* with the others (program _AST_ alignment)
 
 #line(length: 100%, stroke: 0.05em + rgb("#23373b"))
