@@ -172,9 +172,41 @@
   #figure(image("images/ac.svg", width: 74%))
 ]
 
+== Field Calculus
+
+=== Field
+
+#quote[A #emph[field] is a *distributed* data structure that associates a _value_ to each _device_ in the system] #cite(label("DBLP:conf/coordination/AudritoBDV18"))
+
+#components.side-by-side[
+  === Neighboring
+  Build a *field* of values from the _neighbours_ of a device.
+  ```scala
+  val f = nbr(10.0)
+  //> f: Field[Double]
+
+  ```
+][
+  === Repeating
+  Preserves a value across the *rounds* starting with a _default_.
+  ```scala
+  val a = rep(0): it =>
+    it + 1
+
+  ```
+][
+  === Branching
+  *Split* the network based on a _condition_.
+  ```scala
+  branch(cond) { nbr(0) } { 
+    nbr(Int.MaxValue)
+  }
+  ```
+]
+
 == Alignment
 
-Each device produces a tree of values where each node in the tree associate a point in the #emph[AST] of the program with the corresponding *value*.
+Each device produces a _tree of values_ where each node in the tree associate a point in the #emph[AST] of the program with the corresponding *value*.
 #only("1")[
   #figure(image("images/alignment.svg"))
 ]
@@ -472,11 +504,11 @@ The #emph[offloading] can be iteratively applied determinig a *forwarding chain*
 
 Execution model #emph[formalized] via operational semantics #cite(label("DBLP:conf/acsos/FarabegoliVC24"))
 
-== Scenario
+== Example Scenario
 
 #figure(image("images/rescue-scenario.svg"))
 
-== Deployment
+== Example Deployment
 
 #figure(image("images/rescue-scenario-deployment.svg"))
 
