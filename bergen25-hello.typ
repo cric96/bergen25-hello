@@ -45,7 +45,7 @@
     show-bibliography-as-footnote: bibliography(title: none, "bibliography.bib"),
   ),
   config-info(
-    title: [Engineering Collective Systems],
+    title: [Engineering Collective Adaptive Systems],
     subtitle: [Language-based approach to programming "swarms" of devices],
     author: author_list(
       (
@@ -100,6 +100,7 @@
 
   === Research Scope and Interests
   - Macroprogramming languages for _collective adaptive systems_
+    - Focus - _Swarm programming_
   - Automated design for collective behaviors
   - Integration of #emph[AI] and #emph[ML] with collective programming paradigms
 ]
@@ -285,33 +286,42 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
   radius: 0em,
   inset: 1em,
   width: 100%,
-  height: 30%
+  height: 25%
 )[
-  === #title
-  #set text(size: 16pt)
+  #v(-0.5em)
+  #set text(size: 18pt, weight: "bold", style: "italic")
+  #title
+  #v(-0.5em)
+  #line(length: 100%, stroke: 0.5pt + gray.darken(20%))
+  #v(-0.5em)
+  #set text(size: 16pt, weight: "light", style: "normal")
   #items
 ]
-
 #components.side-by-side(columns: (1fr, 1fr, 1fr))[
   #research-block("Applications", [
-      - #emph[Swarm Robotics ]
+      #set text(size: 14pt)
+      - #emph[Swarm Robotics ]#cite(label("aguzzi2023macroswarm"))
       - Smart cities
   ])
 ][
   #research-block("Cooperative Learning", [
-    - Proximity-based federated leanring
+    #set text(size: 14pt)
+    - Proximity-based federated leanring#cite(label("DBLP:conf/acsos/DominiAFVE24"))
   ])
 ][
   #research-block("Hybrid Approach", [
+    #set text(size: 14pt)
     - #emph[Field Informed Reinforcement Learning]
   ])
 ]
 #components.side-by-side(columns: (1fr, 1fr))[
   #research-block("Runtime Monitoring", [
+    #set text(size: 14pt)
     - Spatial Logics with for Runtime Monitoring
   ])
 ][
   #research-block("Programming Languauges", [
+    #set text(size: 14pt)
     - Functional Reactive Programming for Aggregate
     - Visual programming for collective systems
   ])
@@ -319,9 +329,7 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
 
 #v(0.5em)
 
-#only(2)[
-  These areas need stil to be explored?
-]
+#only(2)[Something is missing?]
 
 #focus-slide[
   *NO.*
@@ -330,26 +338,133 @@ The entire (_macro_-)program is executed by #emph[all the devices] in the networ
   #only(3)[... April Fools! 🤪]
 ]
 
-= Swarm Programming via Aggragate
+= Swarm Programming
 
-== Swarm Programming A Aggregrate Programming Perspective
-Put some ideas here
-== Macro Swarm
-Put some charts
-== Pattern Formation Convergence
-Put the new idea of mirko here
+== Swarm Programming -- An Aggregrate Programming Perspective
+=== Swarm Programming Fundamentals
+
+- #emph[Swarm Programming] enables coordinating multiple devices toward #underline[common goals]
+  through collective intelligence
+
+=== Behavior Classification
+
+#set list(marker: box(fill: rgb("#eb811b5f"), inset: 0.15em, text(size: 0.7em, rgb("#23373b"), [→])))
+- *Spatial Organization*: formation control, flocking, pattern creation
+- *Task Allocation*: distributed resource management, workload distribution
+- *Collective Decision-Making*: consensus building, distributed voting protocols
+
+=== Aggregate Computing for Swarms
+
+#components.side-by-side(columns: (3fr, 2fr))[
+  - Field-based abstractions provide natural mapping to swarm coordination
+  - Computational fields become both:
+    - Input sensors capturing environmental data
+    - Output controllers generating navigational potential fields
+]
+== Macro swarm
+#block(
+  fill: rgb("#f5f5f5"),
+  inset: 1em,
+  radius: 0.5em,
+  width: 100%,
+)[
+  #set text(style: "italic")
+  #align(center)[
+    #text(weight: "bold", size: 1.1em)[MacroSwarm]
+  ]
+  
+  A macro programming approach based on #emph[Aggregate Computing] (field-based coordination) 
+  for programming swarm behaviors in a #text(rgb("#eb811b"))[modular] and #text(rgb("#eb811b"))[scalable] way.
+]
+#components.side-by-side(columns: (1fr, 1fr))[
+  === Architecture
+  #image("images/overview-macroswarm.png", width: 100%)
+][
+  === MacroSwarm -- examples
+  #image("example-of-movement.png", width: 70%)
+]
+== Pattern Formation Convergence -- Quasi-Static Approximation
+
+=== Quasistatic Approximation for Formation Convergence
+
+#definition[
+  An event structure `E` over devices `Delta` performs a #emph[quasistatic evolution] for a self-stabilizing field computation `f` if:
+  
+  1. The network topology remains stable in intervals `[t_i, t_{i+1}]`
+  2. The movement field `f` converges before significant position changes occur
+]
+
+- Assumes computation is fast compared to movement
+- Provides baseline for convergence guarantees
+- Extend self-stabilization to dynamic environments
+
+== Application -- Wildfire Monitoring
+
+Our approach enables effective monitoring of wildfire progression in forest areas #cite(label("DBLP:conf/acsos/GrushchakKPFABS24")):
+
+- Real-time drone coordination for persistent surveillance
+- Adaptive formation patterns based on fire spread dynamics
+- Data collection from multiple environmental sensors
+
+#components.side-by-side(columns: (3fr, 2fr))[
+  - System validated with realistic simulation data from wildfire scenarios (zebras)
+  - Coordinates multiple drones to maximize the animals' visibility
+  - Enables quick response to emerging hotspots through adaptive formations
+][
+  #figure(
+    image("images/wildlife.png", width: 80%),
+  )
+]
+
 == Researcher Night Demo
-Put the demo of the researcher 
-== All here? Towards Hybrid Approach
-Todo
-== Many-Agent Reinforcement Learning -- In a nutshell
-Todo
-== Field Informed Reinforcement Learning -- Overall Idea
-Todo
-== Simulation settings
-Todo
-== Results
-Todo
+=== Live Demonstration
+
+We presented MacroSwarm at European Researcher Night 2024, showcasing real-time pattern formation and coordination with multiple drones. 
+
+#components.side-by-side(columns: (1fr, 1fr))[
+  === Demo Setup
+
+#image("images/base-setting.png", width: 60%)
+][
+  === Demo in Action
+
+  #image("images/example-result.png", width: 80%)
+]
+
+== Open Challenges - Stronger Guarantees
+=== Limitations of Current Approach
+
+- #emph[Quasistatic approximation] presents theoretical limitations:
+  - Assumes stable network topology during computation cycles
+  - Requires computation speed to significantly exceed movement dynamics
+  - Breaks down in highly dynamic or adversarial environments
+
+=== Research Frontiers
+
+- Need for #emph[adaptive formation semantics]:
+  - Beyond static formations to fully dynamic, objective-driven patterns
+  - Continuous reconfiguration based on environmental feedback
+  - Resilience against device failures and communication disruptions
+
+== Open Challenges - Formation Composition
+=== Formation Composition Challenges
+
+- *Composition* for building complex behaviors from simpler ones
+  - Current limitations: monolithic pattern designs with limited reuse
+
+#components.side-by-side(columns: (1fr, 1fr))[
+  === Research Questions
+  - What are the primitive building blocks for swarm formations?
+  - How to define compositional operators preserving formation properties?
+  - Can we ensure convergence guarantees when combining formations?
+][
+  === Inspiration
+  - Origami programming model #footnote[#link("https://groups.csail.mit.edu/mac/projects/amorphous/Progmat/thesis/origami-global.html")]
+  - Algebraic approaches to spatial pattern composition
+  - Field calculus composition principles
+]
+
+== 
 == Conclusion
 = Conclusion
 
@@ -360,10 +475,11 @@ Todo
   - *Collective Systems* as a paradigm for future computing
   - *Aggregate Programming* as a principled approach to swarm coordination
   - *Field Calculus* abstractions for spatial computations
-  - *Hybrid approaches* combining self-organization with AI/ML techniques
+  - These slides: Focus on *swarm programming* and *pattern formation*
 ][
   === Future Directions
   - Scaling to larger and more heterogeneous systems
+  - Stronger guarantees for dynamic environments
   - Improving robustness in highly dynamic environments
   - Bridging the gap between simulation and real-world deployment
   - Democratizing collective programming with better tools and abstractions
