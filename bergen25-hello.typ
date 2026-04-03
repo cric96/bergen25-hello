@@ -58,8 +58,7 @@
   ),
 )
 
-#set text(font: "Fira Sans", weight: "light", size: 20pt)
-#show math.equation: set text(font: "Fira Math")
+#set text(weight: "light", size: 20pt)
 
 #set raw(tab-size: 4)
 // #show raw: set text(size: 0.85em)
@@ -464,8 +463,6 @@ We presented MacroSwarm at European Researcher Night 2024, showcasing real-time 
   - Field calculus composition principles
 ]
 
-== 
-== Conclusion
 = Conclusion
 
 == Takeaways
